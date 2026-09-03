@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('xpath usage', async ({ page }) => {
+    // Kayıt sayfasını aç.
     await page.goto("https://practicesoftwaretesting.com/auth/register")
 
     await expect(page.locator("//h3")).toHaveText("Customer registration"); //tagname ile

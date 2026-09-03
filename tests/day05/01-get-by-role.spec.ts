@@ -10,6 +10,8 @@ explicit(<div role="button") bir rolu olmalidir. )
 
 test("Baslik gorunurluk testi", async({page}) =>{
 
+// TechPro ana sayfasını aç.
+
 //https://www.techproeducation.com/ sayfasina gidin.
 
 await page.goto("https://www.techproeducation.com/");
