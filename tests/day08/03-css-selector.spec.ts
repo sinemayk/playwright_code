@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('css locator usage', async ({ page }) => {
+    // Kayıt sayfasını aç.
     await page.goto("https://practicesoftwaretesting.com/auth/register");
     await page.locator("input").first().fill("tagname input"); //tagname input ile sectik
     await page.locator("#last_name").fill("id ile sectik")
