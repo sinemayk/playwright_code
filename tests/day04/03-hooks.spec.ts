@@ -27,13 +27,16 @@ test.afterEach(async ({page}) => {
 });
 
 test("Ilk Test - Logo kontrolu", async({page}) => {
+    // İlk testin çalıştığını göster.
     console.log("TEST 1: Logo kontrolu testi calisiyor"); // Test kodlari burada
 });
 
 test("Ikinci Test - Menu linkleri calisiyor", async({page}) => {
+    // İkinci testin çalıştığını göster.
     console.log("TEST 2: Menu linkleri testi calisiyor"); // Test kodlari burada
 });
 
 test("Ucuncu Test - Arama ozelligi", async({page}) => {
+    // Üçüncü testin çalıştığını göster.
     console.log("TEST 3: Arama ozelligi testi calisiyor"); // Test kodlari burada
 });

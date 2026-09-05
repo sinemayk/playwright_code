@@ -33,10 +33,9 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
-    testIdAttribute: "data-test",
-    // actionTimeout:10000,
-    // navigationTimeout:15000
+    trace: 'on-first-retry',
+    // Test kimliklerini data-test özniteliğinden okumayı sağlar.
+    testIdAttribute:"data-test"
   },
 
   /* Configure projects for major browsers */

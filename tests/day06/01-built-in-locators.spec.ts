@@ -4,10 +4,12 @@ import { test, expect, Locator } from "@playwright/test";
 test("getByText() usage", async ({ page }) => {
   //https://www.techproeducation.com/ sayfasina gidin.
 
+  // TechPro ana sayfasını aç.
   await page.goto("https://www.techproeducation.com/");
 
   //Baslik yazisini getByText ile locate edin.
 
+  // Başlığı metin içeriğine göre seç.
   const appListText: Locator = page.getByText(
     "Launch a high-paying tech career — guaranteed. ",
     { exact: true },
@@ -20,6 +22,7 @@ test("getByText() usage", async ({ page }) => {
 test("getByTitle() usage", async ({ page }) => {
   //Techpro adresine git
 
+  // TechPro ana sayfasını aç.
   await page.goto("https://www.techproeducation.com/");
 
   //Go to Turkish linkine tikla
@@ -36,6 +39,7 @@ test("getByTitle() usage", async ({ page }) => {
 });
 
 test("getByLabel() usage", async ({ page }) => {
+  // Kayıt sayfasına geçiş için ana sayfayı aç.
   await page.goto("https://www.techproeducation.com/");
   await page
     .locator("header")
@@ -53,4 +57,3 @@ test("getByLabel() usage", async ({ page }) => {
   const referral = page.locator('iframe[title="Free Enrollment Form"]').contentFrame().getByRole('textbox', { name: 'Referral' });
   expect(referral).toHaveValue("Can")
 });
-
