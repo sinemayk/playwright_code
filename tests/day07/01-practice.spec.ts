@@ -5,7 +5,9 @@ test("add a product to the cart", async ({ page }) => {
   await page.goto("https://www.saucedemo.com/");
 
   await page.getByPlaceholder("Username").fill("standard_user");
+  // Parola alanını doldur.
   await page.getByPlaceholder("Password").fill("secret_sauce");
+  // Giriş yap.
   await page.getByRole("button", { name: "Login" }).click();
 
   // Ürünler sayfasının açıldığını doğrula.
@@ -23,6 +25,7 @@ test("add a product to the cart", async ({ page }) => {
   await page.getByTestId("shopping-cart-link").click();
 
   await expect(page.getByText("Your Cart")).toBeVisible();
+  // Ürün listesinden alışverişe devam et.
   await page.getByRole("button", {name:"Continue Shopping"}).click();
   await expect(page.getByText("Products")).toBeVisible();
   await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
