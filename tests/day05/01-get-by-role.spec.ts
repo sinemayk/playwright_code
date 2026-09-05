@@ -18,6 +18,7 @@ await page.goto("https://www.techproeducation.com/");
 
 //Baslik yazisini getByRole ile locate edin.
 
+// Başlık öğesini role tabanlı locator ile seç.
 const appListText : Locator = page.getByRole("heading", { name: 'Launch a high-paying tech' });
 
 //Gorunur oldugunu dogrulayin.
