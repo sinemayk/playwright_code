@@ -4,6 +4,7 @@ test('xpath usage', async ({ page }) => {
     // Kayıt sayfasını aç.
     await page.goto("https://practicesoftwaretesting.com/auth/register")
 
+    // Kayıt başlığının metnini doğrula.
     await expect(page.locator("//h3")).toHaveText("Customer registration"); //tagname ile
 
     //tag + att name + att value

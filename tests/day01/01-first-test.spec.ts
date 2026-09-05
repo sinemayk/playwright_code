@@ -17,6 +17,7 @@ yapilar bulundugunu belirtir ve await kullabilmek icin fonksiyonu async olarak i
 */
 
 test("Sayfa basligini dogrula", async({page})=>{ // async olmadan await kullanamazsin
+// Google ana sayfasını aç.
 await page.goto("https://www.google.com") // buraya await yazmadim, hata verdi. 
 
 
@@ -40,12 +41,20 @@ expect(title).toBe("Google")
 
 
 test('test', async ({ page }) => {
+// TechPro ana sayfasını aç.
 await page.goto('https://www.techproeducation.com/en');
+// Kurslar sayfasına git.
 await page.getByRole('link', { name: 'Courses', exact: true }).click();
+// Tüm programlar başlığını doğrula.
 await expect(page.getByRole('heading', { name: 'All Programs' })).toBeVisible();
+// On üçüncü makalenin bağlantısını aç.
 await page.locator('article:nth-child(13) > .inline-link').click();
+// Ücretsiz kayıt bağlantısını aç.
 await page.getByRole('link', { name: 'Apply for Free Enrollment' }).click();
+// Kayıt formundaki e-posta alanını seç.
 await page.locator('iframe[title="Free Enrollment Form"]').contentFrame().getByRole('textbox', { name: 'Email Required' }).click();
+// E-posta alanına örnek değer gir.
 await page.locator('iframe[title="Free Enrollment Form"]').contentFrame().getByRole('textbox', { name: 'Email Required' }).fill('Sinem');
+// Girilen değerin doğru olduğunu doğrula.
 await expect(page.locator('iframe[title="Free Enrollment Form"]').contentFrame().getByRole('textbox', { name: 'Email Required' })).toHaveValue('Sinem');
 });
