@@ -18,6 +18,7 @@ test("add a product to the cart", async ({ page }) => {
   await expect(page.getByTestId("back-to-products")).toBeVisible();
 
   await page.getByRole("button", { name: /add to cart/i }).click();
+  // Sepete ekleme sonrasında buton ve ürün adedindeki değişimi doğrula.
   await expect(page.getByRole("button", { name: /remove/i })).toBeVisible();
   await expect(page.getByText("1", { exact: true })).toBeVisible();
 
