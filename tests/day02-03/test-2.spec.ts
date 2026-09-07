@@ -29,6 +29,7 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Active' }).click();
   // Tamamlanan görevler filtresini aç.
   await page.getByRole('link', { name: 'Completed' }).click();
+  // Filtre değişikliklerinden sonra görev giriş alanının kullanılabilir kaldığını doğrula.
   await expect(page.getByRole('textbox', { name: 'What needs to be done?' })).toBeVisible();
 
 });
