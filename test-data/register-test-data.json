@@ -1,0 +1,13 @@
+{
+    "firstName": "Ahmet",
+    "lastName": "Yilmaz",
+    "username": "ahmetyilmaz",
+    "email": "ahmet@test.com",
+    "password": "Test1234!",
+    "phoneNumber": "571-000-0000",
+    "gender": "Male",
+    "dateOfBirth": "01-15-1990",
+    "department": "Department of Engineering",
+    "jobtitle": "SDET",
+    "programmingLanguage": "Javascript"
+}
