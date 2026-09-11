@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "day26": "npx playwright test day26",
+    "smoke": "npx playwright test smoke",
+    "report": "npx allure generate allure-results -o allure-report --clean && npx allure open"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,7 +15,9 @@
   "devDependencies": {
     "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.62.1",
-    "@types/node": "^26.4.0"
+    "@types/node": "^26.4.0",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.12.1"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

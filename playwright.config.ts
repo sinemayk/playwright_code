@@ -30,7 +30,14 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [
+    ["line"], //terminalde test sonuclarini anlik olarak satir satir gosterir
+    ["html"], //pw nin kendi built-in HTML raporunu olusturur ve test bitince otomatik acar
+    [
+      "allure-playwright", //Allure raporlama kutuphanesini kullan demek
+      { resultsDir: "allure-results" },
+    ], //test sonuclarinin ham verisini "allure-results" klasorune kaydet
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -46,10 +53,19 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    { name: "iPhone 13", use: { ...devices["iPhone 13"] } },
+    { name: "ipad mini", use: { ...devices["iPad Mini"] } },
+    { name: "setup", testMatch: "**/auth.setup.ts" },
     {
       name: "smoke",
-      use: { ...devices["Desktop Chrome"] },
-      testMatch: "**/smoke/*.spec.ts"
+      use: {
+        ...devices["Desktop Chrome"],
+        headless: false,
+        viewport: { width: 350, height: 700 },
+        storageState: "playwright/.auth/user.json",
+      },
+      testMatch: "**/smoke/*.spec.ts",
+      dependencies: ["setup"], //smoke testi calismadan setup calisir
     },
     {
       name: "chromium",
