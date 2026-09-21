@@ -1,4 +1,7 @@
 # Playwright Practice Project
+![Playwright Tests](https://github.com/sinemayk/playwright_code/actions/workflows/playwright.yml/badge.svg)
+
+📊 [Canlı Test Raporu](https://sinemayk.github.io/playwright_code/)
 
 This project is an automation workspace prepared for learning and practicing with Playwright Test. It includes browser automation fundamentals, locator usage, assertions, custom fixture structures, auth flows, JSON/Excel data sources, and reporting topics.
 
