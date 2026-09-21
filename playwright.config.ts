@@ -57,6 +57,10 @@ export default defineConfig({
   projects: [
     //{ name: "iPhone 13", use: { ...devices["iPhone 13"] } },
     //{ name: "ipad mini", use: { ...devices["iPad Mini"] } },
+    {
+      name: "api",
+      testMatch: "**/api/*.spec.ts",
+    },
     { name: "setup", testMatch: "**/auth.setup.ts" },
     {
       name: "smoke",
@@ -69,7 +73,7 @@ export default defineConfig({
       testMatch: "**/smoke/*.spec.ts",
       dependencies: ["setup"], //smoke testi calismadan setup calisir
     },
-   /* {
+    /* {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },

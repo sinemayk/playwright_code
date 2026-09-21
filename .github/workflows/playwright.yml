@@ -28,6 +28,8 @@ jobs:
           SAUCEDEMO_LAST_NAME: ${{ secrets.SAUCEDEMO_LAST_NAME }}
           SAUCEDEMO_POSTAL_CODE: ${{ secrets.SAUCEDEMO_POSTAL_CODE }}
           BASE_URL: ${{ secrets.SAUCE_DEMO_URL }}
+          RESTFUL_BOOKER_USERNAME: ${{ secrets.RESTFUL_BOOKER_USERNAME }}
+          RESTFUL_BOOKER_PASSWORD: ${{ secrets.RESTFUL_BOOKER_PASSWORD }}
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
