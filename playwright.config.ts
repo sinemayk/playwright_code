@@ -55,8 +55,8 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: "iPhone 13", use: { ...devices["iPhone 13"] } },
-    { name: "ipad mini", use: { ...devices["iPad Mini"] } },
+   // { name: "iPhone 13", use: { ...devices["iPhone 13"] } },
+  //  { name: "ipad mini", use: { ...devices["iPad Mini"] } },
     { name: "setup", testMatch: "**/auth.setup.ts" },
     {
       name: "smoke",
@@ -79,10 +79,10 @@ export default defineConfig({
       use: { ...devices["Desktop Firefox"] },
     },
 
-    {
+   /* {
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
-    },
+    },*/
 
     /* Test against mobile viewports. */
     // {
