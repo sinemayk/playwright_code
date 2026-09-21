@@ -27,7 +27,7 @@ The project mainly targets browser automation fundamentals and intermediate Play
 
 ```text
 playwright_code/
-├── .env
+├── .env.example
 ├── .gitignore
 ├── package.json
 ├── playwright.config.ts
