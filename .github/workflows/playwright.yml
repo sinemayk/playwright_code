@@ -34,7 +34,7 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-        - name: Get Allure history
+    - name: Get Allure history
       uses: actions/checkout@v4
       if: always()
       continue-on-error: true
