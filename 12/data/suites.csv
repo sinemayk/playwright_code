@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1115","checkbox","smoke","2026-09-21","passed","2026-09-21","","smoke/04-checkbox.spec.ts","",""
+"","664","Login oturumunu kaydet","setup","2026-09-21","passed","2026-09-21","","auth.setup.ts","",""
+"","547","login test standard_user","smoke","2026-09-21","passed","2026-09-21","parametrize login","smoke/03-login.spec.ts","",""
+"","455","login test visual_user","smoke","2026-09-21","passed","2026-09-21","parametrize login","smoke/03-login.spec.ts","",""
+"","637","login test problem_user","smoke","2026-09-21","passed","2026-09-21","parametrize login","smoke/03-login.spec.ts","",""
+"","5732","login test performance_glitch_user","smoke","2026-09-21","passed","2026-09-21","parametrize login","smoke/03-login.spec.ts","",""
+"","428","login test error_user","smoke","2026-09-21","passed","2026-09-21","parametrize login","smoke/03-login.spec.ts","",""
