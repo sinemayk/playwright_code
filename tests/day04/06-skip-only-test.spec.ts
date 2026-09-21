@@ -2,7 +2,7 @@ import {test, expect} from "@playwright/test"
 
 test.describe("Grup 1 Techpro Title ve Url Testleri", () =>{
 
-test.only("Test 1: title kontrolu", async ({page}) => {
+test("Test 1: title kontrolu", async ({page}) => {
     // Sadece bu test çalışır ve sayfa başlığını kontrol eder.
     await page.goto("https://techproeducation.com");
     // Sayfa başlığını al.
