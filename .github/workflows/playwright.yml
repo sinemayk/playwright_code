@@ -19,6 +19,15 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        SAUCEDEMO_USERNAME_VALID: ${{ secrets.SAUCEDEMO_USERNAME_VALID }}
+        SAUCEDEMO_PASSWORD_VALID: ${{ secrets.SAUCEDEMO_PASSWORD_VALID }}
+        SAUCEDEMO_USERNAME_INVALID: ${{ secrets.SAUCEDEMO_USERNAME_INVALID }}
+        SAUCEDEMO_PASSWORD_INVALID: ${{ secrets.SAUCEDEMO_PASSWORD_INVALID }}
+        SAUCEDEMO_FIRST_NAME: ${{ secrets.SAUCEDEMO_FIRST_NAME }}
+        SAUCEDEMO_LAST_NAME: ${{ secrets.SAUCEDEMO_LAST_NAME }}
+        SAUCEDEMO_POSTAL_CODE: ${{ secrets.SAUCEDEMO_POSTAL_CODE }}
+        BASE_URL: ${{ secrets.SAUCE_DEMO_URL }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
