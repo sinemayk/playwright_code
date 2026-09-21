@@ -1,43 +1,59 @@
 # Playwright Practice Project
 
-This repository is a Playwright learning and automation-practice project built with Playwright Test. It contains day-by-day examples, browser automation exercises, custom fixtures, reusable auth flows, utility helpers, and report generation setup.
+This project is an automation workspace prepared for learning and practicing with Playwright Test. It includes browser automation fundamentals, locator usage, assertions, custom fixture structures, auth flows, JSON/Excel data sources, and reporting topics.
 
-The project mainly targets browser automation fundamentals and intermediate Playwright usage such as:
+## Content and purpose
 
-- Page interactions and assertions
-- Locators and selectors
-- Assertions and waits
-- Hooks and test organization
-- Fixtures and custom authentication
-- Browser/project configuration for Chromium, Firefox, WebKit, and mobile devices
-- Test-data generation and storage-state login flows
-- HTML and Allure reporting
+This repository is designed for working on the following topics:
 
-## Tech Stack
+- page navigation and interaction
+- locator and selector patterns
+- assertion and timeout usage examples
+- hooks and test organization patterns
+- custom fixtures and reusable login logic
+- session persistence with `storageState`
+- smoke test flow
+- API test examples
+- Playwright reporting tools
+
+## Tech stack
 
 - Playwright Test
 - TypeScript
 - Node.js
-- Faker.js
-- xlsx
 - dotenv
-- Allure Playwright
+- @faker-js/faker
+- xlsx
+- allure-playwright
 
-## Project Structure
+## Current project structure
 
 ```text
 playwright_code/
+├── .env
 ├── .env.example
 ├── .gitignore
-├── package.json
-├── playwright.config.ts
-├── tsconfig.json
-├── README.md
 ├── fixtures/
 │   ├── auth.fixture.ts
 │   ├── hw-auth.fixture.ts
 │   └── mesaj.fixtures.ts
+├── node_modules/
+├── package-lock.json
+├── package.json
+├── playwright/
+│   └── .auth/
+│       └── user.json
+├── playwright.config.ts
+├── playwright-report/
+├── README.md
+├── screenshots/
+├── test-data/
+│   ├── login-test-data.json
+│   └── register-test-data.json
+├── test-results/
 ├── tests/
+│   ├── api/
+│   │   └── reqres.spec.ts
 │   ├── auth.setup.ts
 │   ├── day01/
 │   ├── day02-03/
@@ -66,85 +82,81 @@ playwright_code/
 │   ├── day27/
 │   ├── day28/
 │   └── smoke/
+├── tsconfig.json
 ├── utils/
 │   ├── excelHelper.ts
 │   └── testDataHelper.ts
-├── test-data/
-│   ├── login-test-data.json
-│   └── register-test-data.json
-├── playwright/
-│   └── .auth/
-│       └── user.json
-├── screenshots/
-├── test-results/
-├── allure-results/
-├── allure-report/
-├── playwright-report/
-└── node_modules/
+└── settings.json
 ```
 
-## Configuration Overview
+## Configuration status
 
-The Playwright setup is defined in [playwright.config.ts](playwright.config.ts). It includes:
+The settings are defined in [playwright.config.ts](playwright.config.ts). The current setup includes:
 
 - test folder: `./tests`
-- parallel execution enabled
-- browser projects for:
-  - `chromium`
-  - `firefox`
-  - `webkit`
-  - `iPhone 13`
-  - `iPad Mini`
-  - `smoke`
-- setup dependency to run authentication before smoke tests
-- storage state authentication from `playwright/.auth/user.json`
-- reporters:
-  - `line` for terminal output
-  - `html` for built-in Playwright report
-  - `allure-playwright` for Allure reporting
-- screenshot, video, and trace retained on failure
+- tests run in parallel
+- `fullyParallel: true`
+- reporters enabled: `line`, `html`, and `allure-playwright`
+- screenshots, video, and trace are collected on failure
+- a separate `setup` project is defined
+- the `smoke` project depends on the `setup` dependency
+- login state is saved to `playwright/.auth/user.json` after authentication
 
-## Authentication and Fixtures
+Note: in the current config, broader browser profiles such as Chromium, Firefox, and WebKit are commented out; the active usage pattern is the `setup` and `smoke` flow.
 
-The project demonstrates multiple ways of handling login state:
+## Session and auth flow
 
-### 1. `tests/auth.setup.ts`
-This setup file performs login to SauceDemo and saves browser storage to a JSON state file. The `smoke` project depends on this step before running tests.
+The project includes different authentication examples.
 
-### 2. `fixtures/auth.fixture.ts`
-A custom fixture logs in to SauceDemo and provides a `loggedInPage` object to tests.
+### 1) `tests/auth.setup.ts`
+This file logs in to SauceDemo and saves the session using `storageState`. The `smoke` tests then run with that state already available.
 
-### 3. `fixtures/hw-auth.fixture.ts`
-A custom homework fixture logs in to OrangeHRM and verifies that the user reaches the Dashboard page.
+### 2) `fixtures/auth.fixture.ts`
+This fixture automates the login flow for SauceDemo and provides a reusable `loggedInPage` object.
 
-This shows a practical flow for reusing authentication across multiple tests and avoiding repeated login steps.
+### 3) `fixtures/hw-auth.fixture.ts`
+This fixture logs in to OrangeHRM, verifies the Dashboard page is visible, and then allows the rest of the test to continue.
 
-## Utilities
+## Data helpers
 
 ### `utils/testDataHelper.ts`
-Generates dynamic form data using Faker, including:
+This helper generates dynamic data using Faker, including:
 
-- names
+- full name
 - email
 - URL
 - password
 - phone number
-- lorem text
+- sample lorem text
 
 ### `utils/excelHelper.ts`
-This helper is intended for Excel-driven test data processing using the `xlsx` package.
+This helper contains functions for Excel-based read/write operations using the `xlsx` package.
 
-## Test Data
+## Test data
 
-The directory `test-data/` contains JSON files used for login and registration examples, which helps practice data-driven testing.
+The `test-data/` folder contains example data files for login and registration scenarios. These are used for data-driven testing examples.
 
-## Running the Tests
+## Environment variables
 
-Install dependencies:
+The project uses `.env` and `.env.example`. Example structure:
+
+```env
+SAUCE_DEMO_URL=https://www.saucedemo.com
+SAUCE_DEMO_USERNAME=your_username
+SAUCE_DEMO_PASSWORD=your_password
+```
+
+You need to create the `.env` file and fill in the values before running the tests.
+
+## Installation
+
+To install dependencies:
 
 ```bash
 npm install
 ```
+
+## Running tests
 
 Run all tests:
 
@@ -152,28 +164,28 @@ Run all tests:
 npx playwright test
 ```
 
-Run a specific project (for example Chromium):
-
-```bash
-npx playwright test --project=chromium
-```
-
-Run smoke tests:
+Run only the smoke tests:
 
 ```bash
 npm run smoke
 ```
 
-Run the day26 example group:
+Run a specific test file:
 
 ```bash
-npm run day26
+npx playwright test tests/api/reqres.spec.ts
 ```
 
-Run tests in headed mode:
+Run in headed mode:
 
 ```bash
 npx playwright test --headed
+```
+
+Run a specific project:
+
+```bash
+npx playwright test --project=smoke
 ```
 
 ## Reporting
@@ -190,29 +202,14 @@ Open the built-in Playwright HTML report:
 npx playwright show-report
 ```
 
-## Learning Progression in This Repo
+## Current notes
 
-This repository is organized as a curriculum and contains examples for different learning stages:
-
-- Basic test creation and runner usage
-- Locators and selectors
-- Assertions and navigation
-- Navigation and page actions
-- Hooks and test grouping
-- Mocking and data-driven practices
-- Form interaction and input handling
-- Browser/device-specific tests
-- Storage-state auth flow
-- Custom fixtures and reusable login logic
-- Reporting and troubleshooting workflow
-
-## Notes
-
-- This project is mainly educational and practice-oriented.
-- Some tests are built to demonstrate Playwright concepts rather than production-ready enterprise automation patterns.
-- The repository includes generated artifacts such as reports and screenshots that are useful for studying failures and test output.
+- The project was created for learning and practice.
+- Some examples are educational rather than production-ready enterprise patterns.
+- The `tests/` folder contains daily/lesson-based examples.
+- The `auth.setup.ts` flow and the `smoke` flow are the main active workflow in the project.
+- API examples such as `tests/api/reqres.spec.ts` also demonstrate more modern usage areas in the repository.
 
 ## License
 
-This project is currently configured with the ISC license in [package.json](package.json).
->>>>>>> f034a1a (Add README for Playwright Practice Project)
+This project is licensed under the ISC license as defined in [package.json](package.json).
