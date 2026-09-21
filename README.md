@@ -33,7 +33,6 @@ This repository is designed for working on the following topics:
 
 ```text
 playwright_code/
-├── .env
 ├── .env.example
 ├── .gitignore
 ├── fixtures/
