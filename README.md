@@ -203,11 +203,11 @@ Open the built-in Playwright HTML report:
 ```bash
 npx playwright show-report
 ```
-Related Projects
+## Related Projects
 This repo is the part of a three-part Playwright learning series that focuses on the Page Object Model.
 
-playwright-pom — Clean Implementation of Page Object Model
-playwright_bdd — Business-Driven Scenarios with BDD/Gherkin
+-  playwright-pom — Clean Implementation of Page Object Model
+-  playwright_bdd — Business-Driven Scenarios with BDD/Gherkin
 
 ## Current notes
 
