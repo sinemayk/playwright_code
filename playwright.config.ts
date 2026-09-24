@@ -50,7 +50,7 @@ export default defineConfig({
     // Test kimliklerini data-test özniteliğinden okumayı sağlar.
     testIdAttribute: "data-test",
     // actionTimeout:10000,
-    // navigationTimeout:15000
+     navigationTimeout:15000
   },
 
   /* Configure projects for major browsers */
@@ -60,6 +60,11 @@ export default defineConfig({
     {
       name: "api",
       testMatch: "**/api/*.spec.ts",
+    },
+    {
+      name: "ui",
+      testMatch: "**/ui/*.spec.ts",
+      use: { ...devices["Desktop Chrome"] },
     },
     { name: "setup", testMatch: "**/auth.setup.ts" },
     {
